@@ -1,5 +1,7 @@
 # JPU — A RiSC-16 Single-Cycle CPU in Verilog
 
+This is an open implementation of an ISA I have found online, this Project would not have been possible without Prof. Bruce Jacob and his team. ( ENEE 446: Digital Computer Design, Fall 2000 )
+
 A complete, working **RiSC-16** processor written in Verilog and verified with a
 self-checking [Verilator](https://www.veripool.org/verilator/) C++ testbench.
 The whole CPU is built from ten small leaf modules wired together in
