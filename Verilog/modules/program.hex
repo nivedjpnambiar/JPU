@@ -1,0 +1,15 @@
+// JPU RiSC-16 smoke test program
+// 6 instructions — well within imem MEM_DEPTH (64 words). Programs MUST stay
+// within MEM_DEPTH; out-of-range PC is the programmer's responsibility (imem
+// indexes mem[pc] directly with no guard). See instr_mem.v.
+//
+// $readmemh loads one 16-bit hex word per line, starting at address 0.
+// Words 6..63 are left zero-filled by imem = ADD r0,r0,r0 = NOP.
+//
+// addr  hex     assembly              effect
+6401  // 0:  lui  r1, 1          r1 = {imm10=1, 6'b0} = 0x0040 (64)
+2485  // 1:  addi r1, r1, 5      r1 = 64 + 5          = 0x0045 (69)
+287D  // 2:  addi r2, r0, -3     r2 = 0  + (-3)       = 0xFFFD (-3)   [signed imm]
+0C82  // 3:  add  r3, r1, r2     r3 = r1 + r2         = 0x0042 (66)
+5081  // 4:  nand r4, r1, r1     r4 = ~(r1 & r1) = ~r1 = 0xFFBA        [NAND]
+C07F  // 5:  beq  r0, r0, -1     r0==r0 -> PC = 5+1-1 = 5  (self-loop / halt)
