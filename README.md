@@ -155,3 +155,7 @@ instruction memory — no hex files, no per-program rebuild. Every program ends 
 results are then checked against hand-computed values. Internal architectural
 state (registers, data memory) is read back through signals tagged
 `/* verilator public_flat_rw */`.
+
+## Credits 
+
+See [ACKNOWLEDGMENT.md](ACKNOWLEDGMENT.md) for credits and the RiSC-16 ISA's origins.
